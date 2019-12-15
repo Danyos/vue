@@ -1,0 +1,102 @@
+<!--
+####################################################################
+#                                                                  #
+#   _              ____                    _          _   _____    # 
+#  | |            |  __|                  (_)        | | |__ __|   #
+#  | |__  _   _   | |__   ___   _ __ ____  _  _ __   | |   | |     #
+#  | '_ \| | | |  |  __| / _ \|| '__/ _  \| || '__/  | |   | |     #
+#  | |_) | |_| |  | |__ | (_) || | | (_) || || |     | |   | |     #
+#  |_.__/ \__, |  |____| \___,\|_|  \__, /|_||_|     |_|   |_|     #
+#          __/ |                    __/ /                          #
+#         |___/                    |___/                           #
+#                                                                  #
+#                                                                  #
+#                                                                  #
+####################################################################
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue js</title>
+
+<script src="vue.js"></script>
+<style type="text/css">
+	.red{
+		border: 2px solid red;
+	}
+	.green{
+		border: 2px solid green;
+	}
+</style>
+</head>
+<body>
+
+<div id="myvue">
+	<h1 v-once>{{email}}</h1>
+	<h1>{{email}}</h1>
+<input type="text" v-model="email" :class="[email.length < 3 ? 'red' : 'green']" name="">
+<input type="submit" :disabled="email.length<  3" name="">
+
+</div>
+
+<div id="app">
+	<input type="text" v-model="newmenu" @keyup.enter="addnewmenu" name="">
+	<button type="button" @click="addnewmenu">+add</button>
+	<ul>
+		<li v-for="menus in menu">{{ menus.name | capitalize | silvol}}</li>
+	</ul>
+</div>
+
+
+
+
+
+
+
+
+<script>
+	new Vue({
+el:"#myvue",
+data:{
+	email:'daniel.hambardzumyan@mail.ru'
+}
+
+
+	});
+
+	new Vue({
+el:"#app",
+data:{
+	menu:[
+{name:"daniel"},
+{name:"asya"}
+         ],
+	newmenu:''
+},
+methods:{
+addnewmenu:function(){
+return this.menu.unshift({name:this.newmenu})
+
+}
+},
+filters:{
+
+capitalize:function(value){
+	return value.toUpperCase();
+},
+silvol:function(value){
+	return value+"1997";
+}
+
+	}
+	});
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

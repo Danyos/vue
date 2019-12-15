@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue js</title>
+
+<script src="vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+
+	<div v-for="band in bands">
+	 <h1>{{ band.name }}</h1> 
+	 <h3>{{ band.origin }}</h3>
+	 <img  :src=" band.images"/>
+</div>
+</div>
+
+
+<div id="app-2">
+  <span v-if="message">
+
+
+	 <h1>{{ message }}</h1> 
+
+
+	 <button v-on:click="revereMessage">chlik</button>
+
+
+  </span>
+
+
+
+</div>
+
+<div id="input">
+	<p >{{input}}</p>
+<input type="" name="" v-model="input">
+</div>
+
+
+
+
+<div id="app-7">
+  <ul>
+    <todo-item
+      v-for="item in groceryList" v-bind:todos="item" v-bind:key="item.id"></todo-item>
+  </ul>
+</div>
+<div id="app-8">
+<div v-bind:style="styleObject" v-bind:class="DanielClass">barev</div>
+</div>
+<script >
+	Vue.component('todo-item', {
+  props: ['todos'],
+  template: '<li>{{ todos.text }}</li>'
+})
+
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { id: 0, text: 'Овощи',desc:'defi dhf edjfi njekicf' },
+      { id: 1, text: 'Сыр' },
+      { id: 2, text: 'Что там ещё люди едят?' }
+    ]
+  }
+});
+var app8 = new Vue({
+  el: '#app-8',
+
+data: {
+	DanielClass:{
+	active: true,
+    'text-danger': true
+	},
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script >
+	
+
+new Vue({
+	el:'#app',
+	data:{
+		bands:[
+{name: "Daniel", origin: "Hambardzumyan, 22", images: "images/1.webp"},
+{name: "Sargis",origin: "Hambardzumyan, 49", images: "images/2.jpeg"},
+{name: "Nazeli",origin: "Torosyan, 21", images: "images/3.jpg"}
+		]
+	}
+});
+
+
+new Vue({
+	el:'#app-2',
+	data:{
+	    message: 'Привет, Vue.js!'
+	},
+		methods:{
+		revereMessage:function(){
+      this.message = this.message.split('').reverse().join('')
+		}
+
+	}
+})
+new Vue({
+	el:'#input',
+	data:{
+		input:"lracreq dashtery"
+	}
+});
+</script>
+</body>
+</html>
